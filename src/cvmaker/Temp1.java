@@ -33,6 +33,13 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import javax.swing.BorderFactory;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 public class Temp1 {
     private JFrame frame;
@@ -48,114 +55,169 @@ public class Temp1 {
     private JButton pictureButton;
     private String picturePath;
 
+
     public static void main(String[] args) {
         Temp1 cvCreator = new Temp1();
         cvCreator.createForm();
     }
 
     public void createForm() {
-        frame = new JFrame("CV Creator");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700, 600);
-        frame.setLocationRelativeTo(null);
+       
+    // Create the frame
+    JFrame frame = new JFrame("CV Creator");
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(1920, 1080);
+    frame.setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
+    // Create the main panel
+    JPanel panel = new JPanel();
+    panel.setBackground(Color.LIGHT_GRAY);
+    panel.setLayout(null);
 
-        JLabel nameLabel = new JLabel("Name:");
-        nameLabel.setBounds(10, 10, 80, 25);
-        panel.add(nameLabel);
+    // Create the labels and fields
+    int labelWidth = 120;
+    int labelHeight = 25;
+    int fieldWidth = 250;
+    int fieldHeight = 25;
+    int verticalGap = 20;
+    int xPosition = 30;
+    int yPosition = 30;
 
-        nameField = new JTextField();
-        nameField.setBounds(100, 10, 200, 25);
-        panel.add(nameField);
+    JLabel nameLabel = new JLabel("Name:");
+    nameLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(nameLabel);
 
-        JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds(10, 40, 80, 25);
-        panel.add(emailLabel);
+    nameField = new JTextField();
+    nameField.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, labelHeight);
+    panel.add(nameField);
 
-        emailField = new JTextField();
-        emailField.setBounds(100, 40, 200, 25);
-        panel.add(emailField);
+    yPosition += labelHeight + verticalGap;
 
-        JLabel phoneLabel = new JLabel("Phone:");
-        phoneLabel.setBounds(10, 70, 80, 25);
-        panel.add(phoneLabel);
+    JLabel emailLabel = new JLabel("Email:");
+    emailLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(emailLabel);
 
-        phoneField = new JTextField();
-        phoneField.setBounds(100, 70, 200, 25);
-        panel.add(phoneField);
+    emailField = new JTextField();
+    emailField.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, labelHeight);
+    panel.add(emailField);
 
-        JLabel experienceLabel = new JLabel("Experience:");
-        experienceLabel.setBounds(10, 100, 80, 25);
-        panel.add(experienceLabel);
+    yPosition += labelHeight + verticalGap;
 
-        experienceArea = new JTextArea();
-        experienceArea.setBounds(100, 100, 200, 80);
-        panel.add(experienceArea);
+    JLabel phoneLabel = new JLabel("Phone:");
+    phoneLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(phoneLabel);
 
-        JLabel educationLabel = new JLabel("Education:");
-        educationLabel.setBounds(10, 190, 80, 25);
-        panel.add(educationLabel);
+    phoneField = new JTextField();
+    phoneField.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, labelHeight);
+    panel.add(phoneField);
 
-        educationArea = new JTextArea();
-        educationArea.setBounds(100, 190, 200, 80);
-        panel.add(educationArea);
+    yPosition += labelHeight + verticalGap;
 
-        JLabel projectsLabel = new JLabel("Projects:");
-        projectsLabel.setBounds(10, 280, 80, 25);
-        panel.add(projectsLabel);
+    JLabel experienceLabel = new JLabel("Experience:");
+    experienceLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(experienceLabel);
 
-        projectsArea = new JTextArea();
-        projectsArea.setBounds(100, 280, 200, 80);
-        panel.add(projectsArea);
+    experienceArea = new JTextArea();
+    experienceArea.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, fieldHeight);
+    panel.add(experienceArea);
 
-        JLabel achievementsLabel = new JLabel("Achievements and Awards:");
-        achievementsLabel.setBounds(10, 370, 150, 25);
-        panel.add(achievementsLabel);
-        achievementsArea = new JTextArea();
-        achievementsArea.setBounds(160, 370, 200, 80);
-        panel.add(achievementsArea);
+    yPosition += fieldHeight + verticalGap;
 
-        JLabel publicationsLabel = new JLabel("Publications or Research:");
-        publicationsLabel.setBounds(10, 460, 150, 25);
-        panel.add(publicationsLabel);
+    JLabel educationLabel = new JLabel("Education:");
+    educationLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(educationLabel);
 
-        publicationsArea = new JTextArea();
-        publicationsArea.setBounds(160, 460, 200, 80);
-        panel.add(publicationsArea);
+    educationArea = new JTextArea();
+    educationArea.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, fieldHeight);
+    panel.add(educationArea);
 
-        JLabel additionalInfoLabel = new JLabel("Additional Information:");
-        additionalInfoLabel.setBounds(10, 550, 150, 25);
-        panel.add(additionalInfoLabel);
+    yPosition += fieldHeight + verticalGap;
 
-        additionalInfoArea = new JTextArea();
-        additionalInfoArea.setBounds(160, 550, 200, 80);
-        panel.add(additionalInfoArea);
+    JLabel projectsLabel = new JLabel("Projects:");
+    projectsLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(projectsLabel);
 
-        pictureButton = new JButton("Choose Picture");
-        pictureButton.setBounds(10, 640, 150, 25);
+    projectsArea = new JTextArea();
+    projectsArea.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, fieldHeight);
+    panel.add(projectsArea);
+
+    yPosition += fieldHeight + verticalGap;
+
+    JLabel achievementsLabel = new JLabel("Achievements:");
+    achievementsLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(achievementsLabel);
+
+    achievementsArea = new JTextArea();
+    achievementsArea.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, fieldHeight);
+    panel.add(achievementsArea);
+
+    yPosition += fieldHeight + verticalGap;
+    JLabel publicationsLabel = new JLabel("Publications:");
+    publicationsLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(publicationsLabel);
+
+     publicationsArea = new JTextArea();
+    publicationsArea.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, fieldHeight);
+    panel.add(publicationsArea);
+
+    yPosition += fieldHeight + verticalGap;
+
+    JLabel additionalInfoLabel = new JLabel("Additional Info:");
+    additionalInfoLabel.setBounds(xPosition, yPosition, labelWidth, labelHeight);
+    panel.add(additionalInfoLabel);
+
+    additionalInfoArea = new JTextArea();
+    additionalInfoArea.setBounds(xPosition + labelWidth + 10, yPosition, fieldWidth, fieldHeight);
+    panel.add(additionalInfoArea);
+
+    yPosition += fieldHeight + verticalGap;
+
+  
+
+    // Create the buttons
+    JButton pictureButton = new JButton("Choose Picture");
+        pictureButton.setBounds(xPosition, yPosition, 150, labelHeight);
         pictureButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 choosePicture();
             }
         });
+        pictureButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); // Custom border
+        pictureButton.setBackground(Color.BLACK); // Black background
+        pictureButton.setForeground(Color.WHITE); // Text color
         panel.add(pictureButton);
 
         JButton generateButton = new JButton("Generate CV");
-        generateButton.setBounds(10, 670, 150, 25);
+        generateButton.setBounds(xPosition + 170, yPosition, 150, labelHeight);
         generateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 generateCV();
             }
         });
+        generateButton.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2)); // Custom border
+        generateButton.setBackground(Color.BLUE); // Blue background
+        generateButton.setForeground(Color.WHITE); // Text color
         panel.add(generateButton);
 
-        frame.add(panel);
-        frame.setVisible(true);
-    }
+
+   
+    
+
+    JPanel imagePanel = new JPanel();
+        imagePanel.setBounds(700, 30, 470, 720);
+        imagePanel.setBackground(Color.WHITE);
+        imagePanel.setLayout(new BorderLayout());
+
+        
+
+
+    // Add the panel to the frame
+    frame.add(panel);
+    frame.setVisible(true);
+}
+    
 
     public void choosePicture() {
         JFileChooser fileChooser = new JFileChooser();
@@ -166,6 +228,7 @@ public class Temp1 {
     }
 
     public void generateCV() {
+        
         if (nameField.getText().isEmpty() || emailField.getText().isEmpty() || phoneField.getText().isEmpty()
                 || experienceArea.getText().isEmpty() || educationArea.getText().isEmpty()
                 || projectsArea.getText().isEmpty() || achievementsArea.getText().isEmpty()
