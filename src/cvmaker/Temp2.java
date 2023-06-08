@@ -36,7 +36,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 
-public class Temp2 {
+public class Temp2 implements tempate{
     private JFrame frame;
     private JTextField nameField;
     private JTextField emailField;

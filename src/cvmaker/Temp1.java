@@ -41,7 +41,7 @@ import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
-public class Temp1 {
+public class Temp1 implements tempate{
     private JFrame frame;
     private JTextField nameField;
     private JTextField emailField;

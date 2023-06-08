@@ -39,7 +39,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 
-public class Temp5 {
+public class Temp5 implements tempate{
     private JFrame frame;
     private JTextField nameField;
     private JTextField emailField;
