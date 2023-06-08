@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.border.*;
+
 
 public class gui extends JFrame {
     private JTextField usernameField;
@@ -169,12 +171,12 @@ GridBagConstraints gbc = new GridBagConstraints();
 gbc.insets = new Insets(10, 10, 10, 10);
 getContentPane().setBackground(new Color(216, 191, 216));
 // Create the labels with images
-ImageIcon image1 = new ImageIcon("template1.png");
-ImageIcon image2 = new ImageIcon("template2.png");
-ImageIcon image3 = new ImageIcon("template3.png");
-ImageIcon image4 = new ImageIcon("template4.jpg");
-ImageIcon image5 = new ImageIcon("template5.jpg");
-ImageIcon image6 = new ImageIcon("template6.jpg");
+ImageIcon image1 = new ImageIcon("temp1.png");
+ImageIcon image2 = new ImageIcon("temp2.png");
+ImageIcon image3 = new ImageIcon("temp3.png");
+ImageIcon image4 = new ImageIcon("temp4.png");
+ImageIcon image5 = new ImageIcon("temp5.png");
+ImageIcon image6 = new ImageIcon("temp6.png");
 
 JLabel label1 = new JLabel(image1);
 JLabel label2 = new JLabel(image2);
@@ -190,6 +192,28 @@ JButton template3Button = new JButton("Template 3");
 JButton template4Button = new JButton("Template 4");
 JButton template5Button = new JButton("Template 5");
 JButton template6Button = new JButton("Template 6");
+
+Color buttonColor = new Color(0x4976EA);
+Color textColor = Color.WHITE;
+
+template1Button.setBackground(buttonColor);
+template1Button.setForeground(textColor);
+
+template2Button.setBackground(buttonColor);
+template2Button.setForeground(textColor);
+
+template3Button.setBackground(buttonColor);
+template3Button.setForeground(textColor);
+
+template4Button.setBackground(buttonColor);
+template4Button.setForeground(textColor);
+
+template5Button.setBackground(buttonColor);
+template5Button.setForeground(textColor);
+
+template6Button.setBackground(buttonColor);
+template6Button.setForeground(textColor);
+
 
 // Add action listeners to the buttons
 template1Button.addActionListener(new ActionListener() {

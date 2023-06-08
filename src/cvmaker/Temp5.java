@@ -37,7 +37,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 
 public class Temp5 implements tempate{
     private JFrame frame;
@@ -67,7 +69,7 @@ public class Temp5 implements tempate{
 
     // Create the main panel
     JPanel panel = new JPanel();
-    panel.setBackground(Color.LIGHT_GRAY);
+panel.setBackground(new Color(106, 255, 183));
     panel.setLayout(null);
 
     // Create the labels and fields
@@ -201,10 +203,31 @@ public class Temp5 implements tempate{
    
     
 
-    JPanel imagePanel = new JPanel();
-        imagePanel.setBounds(700, 30, 470, 720);
-        imagePanel.setBackground(Color.WHITE);
-        imagePanel.setLayout(new BorderLayout());
+   // Create the image label
+JLabel imageLabel = new JLabel();
+
+
+// Load and set the image
+String imagePath = "cvimg.png"; // Provide the path to your image file
+ImageIcon imageIcon = new ImageIcon(imagePath);
+imageLabel.setIcon(imageIcon);
+
+JPanel imagePanel = new JPanel() {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        java.awt.Image image = imageIcon.getImage();
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    }
+};
+imagePanel.setBounds(520, 0, 500, 700);
+imagePanel.setLayout(null);
+
+        
+
+panel.add(imagePanel);
+
 
         
 
