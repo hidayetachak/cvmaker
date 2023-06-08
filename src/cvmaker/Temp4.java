@@ -36,7 +36,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class Temp4 {
+public class Temp4 implements tempate{
     private JFrame frame;
     private JTextField nameField;
     private JTextField emailField;
