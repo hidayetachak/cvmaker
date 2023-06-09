@@ -229,7 +229,22 @@ imagePanel.setLayout(null);
 panel.add(imagePanel);
 
 
-        
+        //  back button
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(0, 0, 70, 25);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Handle the back button action
+                // Replace "HomePage.java" with the file or class representing your home page
+                Mainpage objz=new Mainpage();
+
+                frame.dispose(); // Close the current frame
+            }
+        });
+        backButton.setBackground(Color.RED); // Blue background
+        backButton.setForeground(Color.WHITE); // Text color
+        panel.add(backButton);
 
 
     // Add the panel to the frame

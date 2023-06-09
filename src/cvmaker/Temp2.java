@@ -197,7 +197,22 @@ panel.setBackground(new Color(106, 255, 183));
         generateButton.setForeground(Color.WHITE); // Text color
         panel.add(generateButton);
 
+//  back button
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(0, 0, 70, 25);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Handle the back button action
+                // Replace "HomePage.java" with the file or class representing your home page
+                Mainpage objz=new Mainpage();
 
+                frame.dispose(); // Close the current frame
+            }
+        });
+        backButton.setBackground(Color.RED); // Blue background
+        backButton.setForeground(Color.WHITE); // Text color
+        panel.add(backButton);
    // Create the image label
 JLabel imageLabel = new JLabel();
 
