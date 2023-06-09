@@ -148,12 +148,18 @@ class SignUpPageGUI extends JFrame {
                 dbconnection b = new dbconnection();
                 boolean signUpSuccess = b.Signuppage(username, password);
                 if (signUpSuccess) {
+                     openMainPage();
+                    dispose();
                     JOptionPane.showMessageDialog(SignUpPageGUI.this, "Sign up successful!");
                 } else {
                     JOptionPane.showMessageDialog(SignUpPageGUI.this, "Username already exists! Please choose a different username.");
                 }
             }
         });
+    }
+ private void openMainPage() {
+        Mainpage mainPage = new Mainpage();
+        mainPage.setVisible(true);
     }
 }
 
@@ -162,10 +168,8 @@ class Mainpage extends JFrame {
         super("Main Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 setExtendedState(JFrame.MAXIMIZED_BOTH); // Set frame to fullscreen
-setUndecorated(true); // Remove frame decorations
 setVisible(true);
 
-// Create a panel with GridBagLayout to hold the buttons and labels
 JPanel buttonPanel = new JPanel(new GridBagLayout());
 GridBagConstraints gbc = new GridBagConstraints();
 gbc.insets = new Insets(10, 10, 10, 10);
@@ -309,6 +313,7 @@ buttonPanel.add(template6Button, gbc);
 
 // Add the panel to the frame
 add(buttonPanel);
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 JLabel selectTemplateLabel = new JLabel("Select Template");
     selectTemplateLabel.setFont(new Font("Arial", Font.BOLD, 24));
     selectTemplateLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -323,9 +328,9 @@ JLabel selectTemplateLabel = new JLabel("Select Template");
         add(rightCornerPanel, BorderLayout.EAST);
     add(selectTemplateLabel, BorderLayout.NORTH);
     add(buttonPanel, BorderLayout.CENTER);
-
+    
     setVisible(true);
-        
+    setLocationRelativeTo(null);
         
     }
 }
