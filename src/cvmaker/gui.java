@@ -16,12 +16,7 @@ public class gui extends JFrame {
     private JPasswordField passwordField;
 
     public gui() {
-         // Welcome Label
-        JLabel welcomeLabel = new JLabel("Welcome to CV Maker");
-
-welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
-welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-welcomeLabel.setForeground(new Color(173, 216, 230));
+       
         JLabel usernameLabel = new JLabel("Username:");
         usernameField = new JTextField(20);
 
@@ -29,13 +24,12 @@ welcomeLabel.setForeground(new Color(173, 216, 230));
         passwordField = new JPasswordField(20);
 
         JButton loginButton = new JButton("Login");
-         loginButton.setBackground(new Color(173, 216, 230));
+         loginButton.setBackground(new Color(0, 128, 0));
+         loginButton.setForeground(Color.WHITE); // Text color
+
         JLabel signUpLabel = new JLabel("Not registered yet?");
         JButton signUpButton = new JButton("Sign up");
          signUpButton.setBackground(new Color(173, 216, 230));
-        JPanel topPanel = new JPanel(new BorderLayout());
-topPanel.add(welcomeLabel, BorderLayout.NORTH);
-topPanel.setBackground(new Color(106, 255, 183));
 
 // Center Panel
 JPanel centerPanel = new JPanel(new GridBagLayout());
@@ -51,8 +45,14 @@ centerPanel.add(passwordField, gbc);
 centerPanel.add(loginButton, gbc);
 centerPanel.setBackground(new Color(106, 255, 183));
 
-// adding banner
+
+JPanel mainPanel = new JPanel(new BorderLayout());
+
+// Banner Panel
+    // Create the image label
 JLabel imageLabel = new JLabel();
+
+
 // Load and set the image
 String imagePath = "banner.png"; // Provide the path to your image file
 ImageIcon imageIcon = new ImageIcon(imagePath);
@@ -63,23 +63,26 @@ JPanel imagePanel = new JPanel() {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         ImageIcon imageIcon = new ImageIcon(imagePath);
-        Image image = imageIcon.getImage();
+        java.awt.Image image = imageIcon.getImage();
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
     }
 };
-imagePanel.setBounds(20, 20, 50, 50);
+imagePanel.setBounds(520, 0, 500, 500);
 imagePanel.setLayout(null);
 
+        
+
+mainPanel.add(imagePanel);
+//        mainPanel.add(bannerPanel, BorderLayout.NORTH);
 // Add the image panel to the center panel
-centerPanel.add(imagePanel);
 // Sign-Up Panel
 JPanel signUpPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 signUpPanel.add(signUpLabel);
 signUpPanel.add(signUpButton);
 
 // Main Panel
-JPanel mainPanel = new JPanel(new BorderLayout());
-mainPanel.add(centerPanel, BorderLayout.CENTER);
+        mainPanel.add(centerPanel, BorderLayout.SOUTH);
+
 mainPanel.setBackground(new Color(106, 255, 183));
 
 // Create a panel for the sign-up label and button
@@ -88,8 +91,7 @@ signUpContainerPanel.add(signUpPanel, BorderLayout.NORTH);
 
 // Add panels to the frame
 setLayout(new BorderLayout());
-add(topPanel, BorderLayout.NORTH);
-add(mainPanel, BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
 add(signUpContainerPanel, BorderLayout.SOUTH);
 
 setExtendedState(JFrame.MAXIMIZED_BOTH);
