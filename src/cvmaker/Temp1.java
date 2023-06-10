@@ -70,7 +70,7 @@ public class Temp1 implements tempate{
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setSize(1920, 1080);
     frame.setLocationRelativeTo(null);
-
+// fixed the screen scrolling
     // Create the main panel
     JPanel panel = new JPanel();
 panel.setBackground(new Color(106, 255, 183));
