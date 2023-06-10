@@ -18,6 +18,7 @@ public class gui extends JFrame {
     public gui() {
          // Welcome Label
         JLabel welcomeLabel = new JLabel("Welcome to CV Maker");
+
 welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
 welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 welcomeLabel.setForeground(new Color(173, 216, 230));
@@ -34,6 +35,7 @@ welcomeLabel.setForeground(new Color(173, 216, 230));
          signUpButton.setBackground(new Color(173, 216, 230));
         JPanel topPanel = new JPanel(new BorderLayout());
 topPanel.add(welcomeLabel, BorderLayout.NORTH);
+topPanel.setBackground(new Color(106, 255, 183));
 
 // Center Panel
 JPanel centerPanel = new JPanel(new GridBagLayout());
@@ -47,7 +49,29 @@ centerPanel.add(usernameField, gbc);
 centerPanel.add(passwordLabel, gbc);
 centerPanel.add(passwordField, gbc);
 centerPanel.add(loginButton, gbc);
+centerPanel.setBackground(new Color(106, 255, 183));
 
+// adding banner
+JLabel imageLabel = new JLabel();
+// Load and set the image
+String imagePath = "banner.png"; // Provide the path to your image file
+ImageIcon imageIcon = new ImageIcon(imagePath);
+imageLabel.setIcon(imageIcon);
+
+JPanel imagePanel = new JPanel() {
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        ImageIcon imageIcon = new ImageIcon(imagePath);
+        Image image = imageIcon.getImage();
+        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    }
+};
+imagePanel.setBounds(20, 20, 50, 50);
+imagePanel.setLayout(null);
+
+// Add the image panel to the center panel
+centerPanel.add(imagePanel);
 // Sign-Up Panel
 JPanel signUpPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 signUpPanel.add(signUpLabel);
@@ -56,6 +80,7 @@ signUpPanel.add(signUpButton);
 // Main Panel
 JPanel mainPanel = new JPanel(new BorderLayout());
 mainPanel.add(centerPanel, BorderLayout.CENTER);
+mainPanel.setBackground(new Color(106, 255, 183));
 
 // Create a panel for the sign-up label and button
 JPanel signUpContainerPanel = new JPanel(new BorderLayout());
