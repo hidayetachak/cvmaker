@@ -16,8 +16,11 @@ public class gui extends JFrame {
     private JPasswordField passwordField;
 
     public gui() {
-        super("Login Page");
-
+         // Welcome Label
+        JLabel welcomeLabel = new JLabel("Welcome to CV Maker");
+welcomeLabel.setFont(new Font("Arial", Font.BOLD, 24));
+welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+welcomeLabel.setForeground(new Color(173, 216, 230));
         JLabel usernameLabel = new JLabel("Username:");
         usernameField = new JTextField(20);
 
@@ -25,37 +28,51 @@ public class gui extends JFrame {
         passwordField = new JPasswordField(20);
 
         JButton loginButton = new JButton("Login");
+         loginButton.setBackground(new Color(173, 216, 230));
         JLabel signUpLabel = new JLabel("Not registered yet?");
         JButton signUpButton = new JButton("Sign up");
+         signUpButton.setBackground(new Color(173, 216, 230));
+        JPanel topPanel = new JPanel(new BorderLayout());
+topPanel.add(welcomeLabel, BorderLayout.NORTH);
 
-        Container container = getContentPane();
-        container.setLayout(new BorderLayout());
+// Center Panel
+JPanel centerPanel = new JPanel(new GridBagLayout());
+GridBagConstraints gbc = new GridBagConstraints();
+gbc.gridx = 0;
+gbc.gridy = GridBagConstraints.RELATIVE;
+gbc.anchor = GridBagConstraints.LINE_START;
+gbc.insets = new Insets(5, 5, 5, 5);
+centerPanel.add(usernameLabel, gbc);
+centerPanel.add(usernameField, gbc);
+centerPanel.add(passwordLabel, gbc);
+centerPanel.add(passwordField, gbc);
+centerPanel.add(loginButton, gbc);
 
-        JPanel loginPanel = new JPanel(new GridLayout(4, 1));
-        loginPanel.add(usernameLabel);
-        loginPanel.add(usernameField);
-        loginPanel.add(passwordLabel);
-        loginPanel.add(passwordField);
+// Sign-Up Panel
+JPanel signUpPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+signUpPanel.add(signUpLabel);
+signUpPanel.add(signUpButton);
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.add(loginButton);
+// Main Panel
+JPanel mainPanel = new JPanel(new BorderLayout());
+mainPanel.add(centerPanel, BorderLayout.CENTER);
 
-        JPanel signUpPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        signUpPanel.add(signUpLabel);
-        signUpPanel.add(signUpButton);
+// Create a panel for the sign-up label and button
+JPanel signUpContainerPanel = new JPanel(new BorderLayout());
+signUpContainerPanel.add(signUpPanel, BorderLayout.NORTH);
 
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.add(loginPanel, BorderLayout.CENTER);
-        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
-        mainPanel.add(signUpPanel, BorderLayout.NORTH);
+// Add panels to the frame
+setLayout(new BorderLayout());
+add(topPanel, BorderLayout.NORTH);
+add(mainPanel, BorderLayout.CENTER);
+add(signUpContainerPanel, BorderLayout.SOUTH);
 
-        container.add(mainPanel, BorderLayout.CENTER);
+setExtendedState(JFrame.MAXIMIZED_BOTH);
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+setVisible(true);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 250);
-        setLocationRelativeTo(null);
-        setVisible(true);
-
+        
+        
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
