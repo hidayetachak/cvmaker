@@ -327,6 +327,22 @@ buttonPanel.add(template5Button, gbc);
 
 gbc.gridx = 2;
 buttonPanel.add(template6Button, gbc);
+// logout button
+//  back button
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.setBounds(930, 0, 90, 30);
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Mainpage objz=new Mainpage();
+                gui objx = new gui();
+                dispose(); // Close the current frame
+            }
+        });
+        logoutButton.setBorder(BorderFactory.createLineBorder(Color.YELLOW, 2)); // Custom border
+        logoutButton.setBackground(Color.YELLOW); 
+        logoutButton.setForeground(Color.BLACK); 
+        add(logoutButton);
 
 // Add the panel to the frame
 add(buttonPanel);
