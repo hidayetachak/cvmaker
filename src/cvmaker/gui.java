@@ -146,9 +146,9 @@ setVisible(true);
     }
 }
 
-class SignUpPageGUI extends JFrame {
-    private JTextField usernameField;
-    private JPasswordField passwordField;
+/*class SignUpPageGUI extends JFrame {
+    //private JTextField usernameField;
+//    private JPasswordField passwordField;
 
     public SignUpPageGUI() {
         super("Sign Up Page");
@@ -160,6 +160,21 @@ class SignUpPageGUI extends JFrame {
         passwordField = new JPasswordField(20);
 
         JButton signUpButton = new JButton("Sign Up");
+        signUpButton.setBackground(new Color(0,128,0));
+        signUpButton.setForeground(Color.WHITE);
+        
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        centerPanel.add(usernameLabel, gbc);
+        centerPanel.add(usernameField, gbc);
+        centerPanel.add(passwordLabel, gbc);
+        centerPanel.add(passwordField, gbc);
+        centerPanel.add(signUpButton, gbc);
+        centerPanel.setBackground(new Color(106, 255, 183));
 
         JPanel loginPanel = new JPanel(new GridLayout(4, 1));
         loginPanel.add(usernameLabel);
@@ -167,11 +182,19 @@ class SignUpPageGUI extends JFrame {
         loginPanel.add(passwordLabel);
         loginPanel.add(passwordField);
 
-        JPanel signUpPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JPanel signUpPanel = new JPanel(new BorderLayout());
         signUpPanel.add(signUpButton);
-
         JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.add(loginPanel, BorderLayout.CENTER);
+        mainPanel.add(centerPanel, BorderLayout.CENTER);
+        mainPanel.setBackground(new Color(106, 255, 183));
+
+        setContentPane(mainPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 250);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        
+       mainPanel.add(loginPanel, BorderLayout.CENTER);
         mainPanel.add(signUpPanel, BorderLayout.SOUTH);
 
         Container container = getContentPane();
@@ -193,6 +216,65 @@ class SignUpPageGUI extends JFrame {
                 boolean signUpSuccess = b.Signuppage(username, password);
                 if (signUpSuccess) {
                      openMainPage();
+                    dispose();
+                    JOptionPane.showMessageDialog(SignUpPageGUI.this, "Sign up successful!");
+                } else {
+                    JOptionPane.showMessageDialog(SignUpPageGUI.this, "Username already exists! Please choose a different username.");
+                }
+            }
+        });
+    }*/
+class SignUpPageGUI extends JFrame {
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+
+    public SignUpPageGUI() {
+        super("Sign Up Page");
+
+        JLabel usernameLabel = new JLabel("Username:");
+        usernameField = new JTextField(20);
+
+        JLabel passwordLabel = new JLabel("Password:");
+        passwordField = new JPasswordField(20);
+
+        JButton signUpButton = new JButton("Sign Up");
+        signUpButton.setBackground(new Color(0, 128, 0));
+        signUpButton.setForeground(Color.WHITE);
+
+        JPanel centerPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.anchor = GridBagConstraints.LINE_START;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        centerPanel.add(usernameLabel, gbc);
+        centerPanel.add(usernameField, gbc);
+        centerPanel.add(passwordLabel, gbc);
+        centerPanel.add(passwordField, gbc);
+        centerPanel.add(signUpButton, gbc);
+        centerPanel.setBackground(new Color(106, 255, 183));
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(centerPanel, BorderLayout.CENTER);
+        mainPanel.setBackground(new Color(106, 255, 183));
+
+        setContentPane(mainPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 250);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+        signUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = usernameField.getText();
+                String password = new String(passwordField.getPassword());
+
+                // Perform sign-up logic
+                dbconnection b = new dbconnection();
+                boolean signUpSuccess = b.Signuppage(username, password);
+                if (signUpSuccess) {
+                    openMainPage();
                     dispose();
                     JOptionPane.showMessageDialog(SignUpPageGUI.this, "Sign up successful!");
                 } else {
