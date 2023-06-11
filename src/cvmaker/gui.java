@@ -31,7 +31,7 @@ public class gui extends JFrame {
         JButton signUpButton = new JButton("Sign up");
          signUpButton.setBackground(new Color(173, 216, 230));
 
-// Center Panel
+// Center Panel main panel
 JPanel centerPanel = new JPanel(new GridBagLayout());
 GridBagConstraints gbc = new GridBagConstraints();
 gbc.gridx = 0;
